@@ -24,24 +24,23 @@ body {
 }
 /* Every Section Will Be Padding Top and Bottom 40px */
 .section--py{padding: 40px 0;}
-section:nth-of-type(odd){background-color: var(--sub-color);}
-section:nth-of-type(even){background-color: #fff;}
+.section:nth-of-type(odd){background-color: var(--sub-color);}
+.section:nth-of-type(even){background-color: #fff;}
 
 a {text-decoration: none;}  
 a:hover {color: var(--main-color);}
   
 ul {list-style: none;}
 p{color: var(--p-color);}
-
+h1,h2,h3,h4,h5,h6{font-family: 'PT Serif';}
 /* Custom Button */
-button{
+.btn{
     border: none;
     padding: 0.5rem 2rem;
     font-size: 14px;
     text-transform: uppercase;
     cursor: pointer;
   }
-button:focus{outline: none;}
 /* If You Want Button With Background Must Be Use This Class */
 .btn--withbg{background-color: var(--main-color); color: #fff;}
 /* If You Want Button With non-Background Must Be Use This Class */
