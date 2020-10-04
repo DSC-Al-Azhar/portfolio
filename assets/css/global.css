@@ -6,13 +6,7 @@ html{scroll-behavior: smooth;} /* Scroll Smooth */
     --p-color: #7a8baa;    /* This For Paragraphs and Links */
     --btn-color: #141f32;  /* This For btn and Heading */
 }
-/* 
-Fonts Should Be Use
-PTSerif => For Heading
-Rubik => For Paragraphs and  Buttons and Links
- */
-@font-face{font-family:'PTSerif'; src:url(../fonts/PTSerif-Regular.ttf);}
-@font-face{font-family:'Rubik'; src:url(../fonts/Rubik.ttf);}
+
 /* Use In Any Section should to Use It :D */
 .container {
     max-width: 1200px;
