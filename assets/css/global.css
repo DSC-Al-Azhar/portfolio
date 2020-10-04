@@ -6,7 +6,12 @@ html{scroll-behavior: smooth;} /* Scroll Smooth */
     --p-color: #7a8baa;    /* This For Paragraphs and Links */
     --btn-color: #141f32;  /* This For btn and Heading */
 }
-
+/* 
+Fonts Should Be Use
+PTSerif => For Heading
+Rubik => For Paragraphs and  Buttons and Links
+ */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Rubik&display=swap');
 /* Use In Any Section should to Use It :D */
 .container {
     max-width: 1200px;
@@ -14,7 +19,7 @@ html{scroll-behavior: smooth;} /* Scroll Smooth */
     margin: auto;
 }
 /* Every Section Will Be Padding Top and Bottom 40px */
-section{padding: 40px 0;}
+.section--py{padding: 40px 0;}
 section:nth-of-type(odd){background-color: var(--sub-color);}
 section:nth-of-type(even){background-color: #fff;}
 
@@ -22,7 +27,6 @@ a {text-decoration: none;}
 a:hover {color: var(--main-color);}
   
 ul {list-style: none;}
-
 p{color: var(--p-color);}
 
 /* Custom Button */
@@ -32,7 +36,6 @@ button{
     font-size: 14px;
     text-transform: uppercase;
     cursor: pointer;
-    border: 1px solid var(--main-color);
   }
 button:focus{outline: none;}
 /* If You Want Button With Background Must Be Use This Class */
