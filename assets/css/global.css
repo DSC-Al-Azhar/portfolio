@@ -12,6 +12,10 @@ PTSerif => For Heading
 Rubik => For Paragraphs and  Buttons and Links
  */
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Rubik&display=swap');
+
+body {
+    font-family: 'Rubik';
+  }
 /* Use In Any Section should to Use It :D */
 .container {
     max-width: 1200px;
