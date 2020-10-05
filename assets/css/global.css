@@ -11,10 +11,10 @@ Fonts Should Be Use
 PTSerif => For Heading
 Rubik => For Paragraphs and  Buttons and Links
  */
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Rubik:ital,wght@0,400;0,500;1,300;1,400&display=swap');
 
 body {
-    font-family: 'Rubik';
+    font-family: 'Rubik' ,sans-serif;
   }
 /* Use In Any Section should to Use It :D */
 .container {
@@ -32,11 +32,11 @@ a:hover {color: var(--main-color);}
   
 ul {list-style: none;}
 p{color: var(--p-color);}
-h1,h2,h3,h4,h5,h6{font-family: 'PT Serif';}
+h1,h2,h3,h4,h5,h6{font-family: 'PT Serif', serif;}
 /* Custom Button */
 .btn{
     border: none;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
     font-size: 14px;
     text-transform: uppercase;
     cursor: pointer;
