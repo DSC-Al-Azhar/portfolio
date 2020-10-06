@@ -1,0 +1,34 @@
+.estimate-project .container {
+  background-image: url("../imgs/Estatimate/bright.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+  border-radius: 25px;
+}
+
+.estimate-project .container .estimate-body {
+  padding-left: 150px;
+  padding-top: 100px;
+}
+
+.estimate-project .container .estimate-body p {
+    font-family: Rubik-Regular-;
+    color: #141f32;
+}
+
+.estimate-project .container .estimate-body h1 {
+    font-family: PTSerif-Bold-;
+    line-height: 28px;
+    text-transform: capitalize;
+    color: #141f32;
+}
+
+.estimate-project .container .estimate-body .btn {
+  cursor: pointer;
+  width: 170px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: #f9320c;
+  color: white;
+  margin-top: 20px;
+}

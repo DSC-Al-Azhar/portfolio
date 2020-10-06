@@ -1,0 +1,60 @@
+.best-expertise .best-expertise-header h1 {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 50px;
+  font-family: PTSerif-Bold-;
+  color: #141f32;
+}
+
+.best-expertise .best-expertise-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.best-expertise .best-expertise-box {
+  width: 360px;
+  height: 400px;
+  background-color: #f9f7ff;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 33px 5px;
+}
+/*
+.best-expertise .best-expertise-box:hover {
+  width: 360px;
+  height: 350px;
+  opacity: 0.03;
+  background-color: #f9320c;
+}
+*/
+.best-expertise .best-expertise-box i {
+  font-size: 40px;
+  object-fit: contain;
+  padding-bottom: 30px;
+  color: #f9320c;
+}
+
+.best-expertise .best-expertise-box .box-heading {
+  font-size: 24px;
+  font-family: PTSerif-Bold-;
+  color: #141f32;
+  margin-bottom: 10px;
+}
+
+.best-expertise .best-expertise-box .box-body {
+  line-height: 28px;
+  color: #7a8baa;
+  font-family: Rubik-Regular;
+  font-size: 16px;
+}
+
+.best-expertise .best-expertise-box .btn {
+  cursor: pointer;
+  width: 230px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #f9320c;
+  color: white;
+  margin-top: 20px;
+}
