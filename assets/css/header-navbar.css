@@ -1,8 +1,17 @@
+body{
+    position: relative;
+}
+main{
+    background-color: #f9f7ff;
+}
 header{
-    height:100vh;
+    height:96.5vh;
     border-radius: 38px;
-    width:80%;
+    width:90%;
     margin:0 auto;
+    box-sizing: border-box;
+    clip-path: polygon(50% 0%, 100% 0, 100% 56%, 55% 100%, 0 100%, 0% 60%, 0 0);
+    padding-top: 1rem !important;
 }
 .navbar{
     display: flex;
@@ -15,6 +24,7 @@ header{
     box-shadow: 0 3px 9px 5px #dddddd73;
     border-radius: 38px;
     margin-top: 1rem;
+    background-color: #fff;
 }
 #navbar__logo{
     color:var(--main-color);
@@ -38,6 +48,9 @@ header{
     letter-spacing: .9px;
     font-size: 13px;
 }
+.navbar__link:hover{
+    transition:.6s;
+}
 .navbar__link--active{
     color: var(--main-color) !important;
 }
@@ -52,4 +65,67 @@ header{
 }
 #navbar__button:hover{
     cursor: pointer;
+    background-color: var(--btn-color);
+    transition:1.2s;
+}
+#outer{
+    display:flex;
+    flex-flow: row wrap;
+    margin-top: 4rem;
+}
+.outer__info {
+    padding: 4rem;
+    flex: .7;
+    margin-left: 1rem;
+}
+#outer__welcome{
+    color:var(--main-color);
+    font-size:2rem;
+    font-family: 'Rubik' ,sans-serif;
+}
+#outer__name{
+    font-size: 4rem;
+    color:var(--btn-color);
+    margin: 1.3rem 0;
+    font-family: 'PTSerif' ,sans-serif;
+    letter-spacing: 5px;
+    font-weight: normal;
+}
+#outer__description{
+    color:var(--p-color);
+    letter-spacing: 0.9px;
+    line-height: 2;
+}
+.outer__buttons{
+    display:flex;
+    flex-flow:row wrap;
+    margin-top:2rem;
+}
+.outer__buttons > button{
+    color:var(--sub-color);
+    border:0;
+    padding:1rem 2.6rem;
+    border-radius:32.5px;
+    font-size: 11px;
+    outline: none;
+}
+#outer__servicesButton{
+    background-color: var(--main-color) !important;
+    margin-right: 2rem;
+}
+#outer__servicesWorks{
+    background-color: var(--btn-color) !important;
+}
+.outer__image {
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    bottom: 52%;
+    left: 59%;
+}
+#outer__avatar{
+    width: 470px;
+    border-radius: 50%;
+    height: 445px;
+    object-fit: cover;
 }
