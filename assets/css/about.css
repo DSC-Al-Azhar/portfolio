@@ -4,14 +4,13 @@
   justify-content: center;
 }
 .about__imgDiv {
-  width: 30%;
-  height: 20%;
-  margin-top: 10px;
+  width: 20%;
+  position: relative;
+  background-image: url("../imgs/about/a1.png");
+  background-size: cover;
   border-top: 2px solid #888;
 }
-.about__image {
-  width: 100%;
-}
+
 .about__btn {
   width: 200px;
   height: 60px;
@@ -21,18 +20,19 @@
   outline: none;
   border-radius: 40px;
   text-transform: capitalize;
-  position: relative;
-  left: 30%;
-  top: 30px;
+  position: absolute;
+  left: 20%;
+  bottom: 37px;
   cursor: pointer;
   transition: 0.4s ease-in-out;
 }
 .about__btn:hover {
-  box-shadow: 5px 5px 5px rgba(245, 139, 97, 0.8);
+  box-shadow: 5px 5px 5px rgba(252, 137, 91, 0.877);
 }
 .about__content {
   width: 30%;
   margin-left: 50px;
+  margin-top: 10px;
 }
 .about__title {
   text-transform: capitalize;
