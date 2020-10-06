@@ -1,0 +1,91 @@
+/* About Section Style [Sara Magdy] */
+.about {
+  display: flex;
+  justify-content: center;
+}
+.about__imgDiv {
+  width: 30%;
+  height: 20%;
+  margin-top: 10px;
+  border-top: 2px solid #888;
+}
+.about__image {
+  width: 100%;
+}
+.about__btn {
+  width: 200px;
+  height: 60px;
+  background-color: var(--main-color);
+  color: #fff;
+  border: 1px solid var(--main-color);
+  outline: none;
+  border-radius: 40px;
+  text-transform: capitalize;
+  position: relative;
+  left: 30%;
+  top: 30px;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+.about__btn:hover {
+  box-shadow: 5px 5px 5px rgba(245, 139, 97, 0.8);
+}
+.about__content {
+  width: 30%;
+  margin-left: 50px;
+}
+.about__title {
+  text-transform: capitalize;
+  font-size: 33px;
+}
+.about__desc {
+  color: var(--p-color);
+  margin: 25px 0;
+
+  line-height: 1.6;
+}
+.about__icon {
+  margin-right: 6px;
+}
+.about__icon--dev {
+  color: var(--main-color);
+}
+.about__icon--ui {
+  color: #8072fc;
+}
+.about__icon--dig {
+  color: #ed3ce3;
+}
+.about__icon--graph {
+  color: #74fa5e;
+}
+.about__subtitle {
+  font-weight: normal;
+  font-size: 18px;
+}
+.about__precent {
+  font-weight: normal;
+  float: right;
+  font-size: 18px;
+}
+.about__proBG {
+  background-color: #e8e7e7;
+}
+.about__techne {
+  background-color: aquamarine;
+  margin: 5px 0 25px 0;
+  height: 4px;
+  display: block;
+}
+.about__tech--dev {
+  background-color: var(--main-color);
+}
+.about__tech--ui {
+  background-color: #8072fc;
+}
+.about__tech--dig {
+  background-color: #ed3ce3;
+}
+.about__tech--graph {
+  background-color: #74fa5e;
+}
