@@ -25,10 +25,11 @@
 
 .estimate-project .container .estimate-body .btn {
   cursor: pointer;
-  width: 170px;
+  width: 160px;
   height: 40px;
   border-radius: 25px;
   background-color: #f9320c;
   color: white;
   margin-top: 20px;
+  font-size: 8px;
 }
