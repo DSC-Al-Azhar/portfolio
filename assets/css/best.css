@@ -6,11 +6,13 @@
   color: #141f32;
 }
 
+/* div contains three divs */
 .best-expertise .best-expertise-group {
   display: flex;
   justify-content: space-around;
 }
 
+/* the div which reabeted in seaction */
 .best-expertise .best-expertise-box {
   width: 360px;
   height: 400px;
@@ -18,20 +20,74 @@
   margin-right: 20px;
   margin-bottom: 20px;
   text-align: center;
-  padding: 33px 5px;
+  padding: 10px 7px;
 }
-/*
-.best-expertise .best-expertise-box:hover {
-  width: 360px;
-  height: 350px;
-  opacity: 0.03;
+
+.best-expertise .best-expertise-box:hover .btn {
   background-color: #f9320c;
+  color: white;
 }
-*/
+
+/* Start Animation for background div */
+.best-expertise .best-expertise-box .best-expertise-box-animation {
+  position: absolute;
+  width: 347px;
+  height: 380px;
+}
+
+.best-expertise
+  .best-expertise-box
+  .best-expertise-box-animation
+  .best-expertise-box-content {
+  z-index: 1;
+  position: absolute;
+}
+
+.best-expertise .best-expertise-box .best-expertise-box-animation:hover::before,
+.best-expertise .best-expertise-box .best-expertise-box-animation:hover::after {
+  position: absolute;
+  background: white;
+  margin-left: -12px;
+  margin-top: -12px;
+  width: 310px;
+  height: 365px;
+  content: "";
+  display: block;
+  border-radius: 50%;
+}
+
+.best-expertise
+  .best-expertise-box
+  .best-expertise-box-animation:hover::before {
+  animation: waving 3s infinite ease-out;
+}
+
+.best-expertise .best-expertise-box .best-expertise-box-animation:hover::after {
+  opacity: 0;
+  animation: waving 3s 1.5s infinite ease-out;
+}
+
+@keyframes waving {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    transform-origin: center;
+    border-radius: 100%;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.03;
+    transform-origin: center;
+    background-color: #f9320c;
+    border-radius: 100%;
+  }
+}
+/* End Animation for background div */
+
 .best-expertise .best-expertise-box i {
   font-size: 40px;
   object-fit: contain;
-  padding-bottom: 30px;
+  padding: 30px 0px;
   color: #f9320c;
 }
 
@@ -47,14 +103,16 @@
   color: #7a8baa;
   font-family: Rubik-Regular;
   font-size: 16px;
+  padding-left: 20px;
 }
 
 .best-expertise .best-expertise-box .btn {
   cursor: pointer;
-  width: 230px;
+  width: 190px;
   height: 50px;
   border-radius: 25px;
-  background-color: #f9320c;
-  color: white;
+  border: solid 2px rgba(249, 50, 12, 0.2);
+  background-color: #f9f7ff;
   margin-top: 20px;
+  font-size: 8px;
 }
