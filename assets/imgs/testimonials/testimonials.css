@@ -42,20 +42,22 @@
 
 .tesimonial-section .tesimonial-img { background-image: url(../testimonials/t1.png);
                                       background-size: cover;
-                                     height: 580px;
-                                     width: 470px;
-                                     margin-right: 300px;
+                                      height: 580px;
+                                      width: 450px;
+                                      margin-right: 310px;
+                                      background-position: center; }
+
                                     
                                       
                                    
-                                   
-}
+                            
 .tesimonial-img .one{
-  width: 100px;
-  height: 115px;
-  margin-left: 15px;
-  margin-top: 455px; }
-  
+                      width: 100px;
+                      height: 115px;
+                      margin-left: 12px;
+                      margin-top: 40px;
+                      margin-top: 455px; }
+                      
   
   
                                         
