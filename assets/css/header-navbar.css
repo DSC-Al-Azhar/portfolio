@@ -105,7 +105,7 @@ header{
     flex-flow:row wrap;
     margin-top:2rem;
 }
-.outer__buttons > button{
+.outer__buttons > a{
     color:var(--sub-color);
     border:0;
     padding:1rem 2.6rem;
@@ -117,8 +117,16 @@ header{
     background-color: var(--main-color) !important;
     margin-right: 2rem;
 }
+#outer__servicesButton:hover{
+    background-color: #f34f30 !important;
+    transition: .6s;
+}
 #outer__servicesWorks{
     background-color: var(--btn-color) !important;
+}
+#outer__servicesWorks:hover{
+    background-color: #24395d !important;
+    transition: .6s;
 }
 .outer__image {
     margin: 0 auto;
