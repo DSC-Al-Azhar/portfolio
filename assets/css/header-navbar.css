@@ -11,6 +11,7 @@ header{
     margin:0 auto;
     box-sizing: border-box;
     padding-top: 1rem !important;
+    position: relative;
 }
 .navbar{
     display: flex;
@@ -28,10 +29,11 @@ header{
 #navbar__logo{
     color: var(--main-color);
     text-transform: uppercase;
-    padding: 1px 6px;
+    padding: 3px 6px;
     border-radius: 3px;
     border: solid 2px var(--main-color);
     background-color: #ffffff;
+    line-height: 1;
 }
 #navbar__logo > h2{
     font-family: 'Rubik' ,sans-serif;
@@ -78,8 +80,8 @@ header{
     margin-top: 4rem;
 }
 .outer__info {
-    padding: 4rem;
-    flex: .7;
+    padding-top: 4rem;
+    flex: 0.58;
     margin-left: 1rem;
 }
 #outer__welcome{
@@ -129,15 +131,23 @@ header{
     transition: .6s;
 }
 .outer__image {
-    margin: 0 auto;
     position: absolute;
-    right: 0;
-    bottom: 52%;
-    left: 59%;
+    right:0;
+    z-index: 2;
+}
+#outer__shadow{
+    position: absolute;
+    width: 335px;
+    height: 300px;
+    left: -1rem;
+    top: -2.6rem;
+    z-index: -1;
+    transform: rotate(4deg);
 }
 #outer__avatar{
     width: 470px;
     border-radius: 50%;
     height: 445px;
     object-fit: cover;
+    z-index: 3;
 }
