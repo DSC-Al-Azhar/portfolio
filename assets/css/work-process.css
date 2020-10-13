@@ -18,8 +18,9 @@
 }
 
 .work-process__line {
-  width: 2rem;
+  width: 4rem;
   height: 3px;
+  display: inline-block;
   background-color: #f9c4bf;
 }
 .work-process__icon {
@@ -28,9 +29,13 @@
   height: 4rem;
   left: 9%;
   display: inline-block;
-  border: 1px dashed #000;
+  border: 1.5px dashed #f9320c;
   border-radius: 50%;
   top: 9%;
+  line-height: 4rem;
+  text-align: center;
+  color: var(--main-color);
+  font-size: 2rem;
 }
 
 .work-process__title {
@@ -43,12 +48,7 @@
   width: 8rem;
   display: none;
 }
-.work-process__image {
-  width: 70%;
-  top: 12%;
-  left: 16%;
-  position: absolute;
-}
+
 .work-process__wrapper {
   width: 5rem;
   height: 5rem;
@@ -60,5 +60,9 @@
   display: block;
 }
 .work-process__wrapper:hover {
-  background-color: #3e4758;
+  background-color: var(--main-color);
+}
+.work-process__wrapper:hover .work-process__icon {
+  border-color: #fff;
+  color: #fff;
 }
