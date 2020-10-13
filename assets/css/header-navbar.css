@@ -26,7 +26,7 @@ header{
     margin-top: 1rem;
     background-color: #fff;
 }
-#navbar__logo{
+.navbar__logo{
     color: var(--main-color);
     text-transform: uppercase;
     padding: 3px 6px;
@@ -35,16 +35,16 @@ header{
     background-color: #ffffff;
     line-height: 1;
 }
-#navbar__logo > h2{
+.navbar__logo > h2{
     font-family: 'Rubik' ,sans-serif;
     font-weight: 100;
     font-size: 2.2rem;
 }
-#navbar__list{
+.navbar__list{
     margin-left: auto;
     margin-right: 2.6rem;
 }
-#navbar__list > li{
+.navbar__list > li{
     display: inline-block;
 }
 .navbar__link{
@@ -60,7 +60,7 @@ header{
 .navbar__link--active{
     color: var(--main-color) !important;
 }
-#navbar__button{
+.navbar__button{
     background-color: var(--main-color);
     color: var(--sub-color) !important;
     border-radius: 50px;
@@ -69,12 +69,12 @@ header{
     outline: none;
     font-size: 0.77rem;
 }
-#navbar__button:hover{
+.navbar__button:hover{
     cursor: pointer;
     background-color: var(--btn-color);
     transition:1.2s;
 }
-#outer{
+.outer{
     display:flex;
     flex-flow: row wrap;
     margin-top: 4rem;
@@ -84,12 +84,12 @@ header{
     flex: 0.58;
     margin-left: 1rem;
 }
-#outer__welcome{
+.outer__welcome{
     color:var(--main-color);
     font-size:2rem;
     font-family: 'Rubik' ,sans-serif;
 }
-#outer__name{
+.outer__name{
     font-size: 4rem;
     color:var(--btn-color);
     margin: 1.3rem 0;
@@ -97,7 +97,7 @@ header{
     letter-spacing: 5px;
     font-weight: normal;
 }
-#outer__description{
+.outer__description{
     color:var(--p-color);
     letter-spacing: 0.9px;
     line-height: 2;
@@ -115,18 +115,18 @@ header{
     font-size: 11px;
     outline: none;
 }
-#outer__servicesButton{
+.outer__servicesButton{
     background-color: var(--main-color) !important;
     margin-right: 2rem;
 }
-#outer__servicesButton:hover{
+.outer__servicesButton:hover{
     background-color: #f34f30 !important;
     transition: .6s;
 }
-#outer__servicesWorks{
+.outer__servicesWorks{
     background-color: var(--btn-color) !important;
 }
-#outer__servicesWorks:hover{
+.outer__servicesWorks:hover{
     background-color: #24395d !important;
     transition: .6s;
 }
@@ -135,7 +135,7 @@ header{
     right:0;
     z-index: 2;
 }
-#outer__shadow{
+.outer__shadow{
     position: absolute;
     width: 335px;
     height: 300px;
@@ -144,7 +144,7 @@ header{
     z-index: -1;
     transform: rotate(4deg);
 }
-#outer__avatar{
+.outer__avatar{
     width: 470px;
     border-radius: 50%;
     height: 445px;
