@@ -10,7 +10,6 @@ header{
     width:90%;
     margin:0 auto;
     box-sizing: border-box;
-    clip-path: polygon(50% 0%, 100% 0, 100% 56%, 55% 100%, 0 100%, 0% 60%, 0 0);
     padding-top: 1rem !important;
 }
 .navbar{
@@ -27,12 +26,17 @@ header{
     background-color: #fff;
 }
 #navbar__logo{
-    color:var(--main-color);
+    color: var(--main-color);
     text-transform: uppercase;
-    padding:8px;
+    padding: 1px 6px;
     border-radius: 3px;
-    border: solid 3px var(--main-color);
+    border: solid 2px var(--main-color);
     background-color: #ffffff;
+}
+#navbar__logo > h2{
+    font-family: 'Rubik' ,sans-serif;
+    font-weight: 100;
+    font-size: 2.2rem;
 }
 #navbar__list{
     margin-left: auto;
