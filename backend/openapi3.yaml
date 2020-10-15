@@ -58,35 +58,7 @@ tags:
     url: http://swagger.io
 paths:
   /users:
-    put:
-      tags:
-      - users
-      summary: Update an existing user
-      operationId: updateUser
-      requestBody:
-        description: User object that needs to be added
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-        required: true
-      responses:
-        200:
-          description: the user has been updated
-          content: {}
-        400:
-          description: Invalid ID supplied
-          content: {}
-        404:
-          description: user not found
-          content: {}
-        405:
-          description: Validation exception
-          content: {}
-      x-codegen-request-body-name: body
+    
     post:
       tags:
       - users
@@ -137,7 +109,7 @@ paths:
           content: {}
       security:
       - api_key: []
-    post:
+    put:
       tags:
       - users
       summary: Updates a user in the store with form data
@@ -276,35 +248,23 @@ paths:
           description: successful operation
           content: {}
   /works:
-    put:
+    get:
       tags:
       - works
-      summary: Update an existing work
-      operationId: updateWork
-      requestBody:
-        description: Work object that needs to be added
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Work'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Work'
-        required: true
+      summary:  GET all the Works from the DB
+      operationId: getWorks
       responses:
         200:
-          description: the work has been updated
+          description: The GET Operation success
           content: {}
-        400:
-          description: Invalid ID supplied
-          content: {}
+        
         404:
-          description: work not found
+          description: There is No works yet
           content: {}
         405:
           description: Validation exception
           content: {}
-      x-codegen-request-body-name: body
+     
     post:
       tags:
       - works
@@ -439,35 +399,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
   /skills:
-    put:
+    get:
       tags:
       - skills
-      summary: Update an existing skill
-      operationId: updateSkill
-      requestBody:
-        description: Skill object that needs to be added
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Skill'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Skill'
-        required: true
+      summary:  GET all the Skills from the DB
+      operationId: getskills
       responses:
         200:
-          description: the skill has been updated
+          description: The GET Operation success
           content: {}
-        400:
-          description: Invalid ID supplied
-          content: {}
+        
         404:
-          description: skill not found
+          description: There is No skills yet
           content: {}
         405:
           description: Validation exception
           content: {}
-      x-codegen-request-body-name: body
     post:
       tags:
       - skills
@@ -516,7 +463,7 @@ paths:
         404:
           description: skills not found
           content: {}
-    post:
+    put:
       tags:
       - skills
       summary: Updates a skills in the store with form data
@@ -569,35 +516,22 @@ paths:
           description: skills not found
           content: {}
   /articles:
-    put:
+    get:
       tags:
       - articles
-      summary: Update an existing article
-      operationId: updatearticle
-      requestBody:
-        description: article object that needs to be added
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Article'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Article'
-        required: true
+      summary:  GET all the Articles from the DB
+      operationId: getArticles
       responses:
         200:
-          description: the article has been updated
+          description: The GET Operation success
           content: {}
-        400:
-          description: Invalid ID supplied
-          content: {}
+        
         404:
-          description: article not found
+          description: There is No articles yet
           content: {}
         405:
           description: Validation exception
           content: {}
-      x-codegen-request-body-name: body
     post:
       tags:
       - articles
@@ -646,7 +580,7 @@ paths:
         404:
           description: articles not found
           content: {}
-    post:
+    put:
       tags:
       - articles
       summary: Updates a articles in the store with form data
@@ -732,35 +666,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
   /comments:
-    put:
+    get:
       tags:
       - comments
-      summary: Update an existing comment
-      operationId: updateComment
-      requestBody:
-        description: comment object that needs to be added
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Comment'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Comment'
-        required: true
+      summary:  GET all the Comments from the DB
+      operationId: getComments
       responses:
         200:
-          description: the comment has been updated
-          content: {}
-        400:
-          description: Invalid ID supplied
+          description: The GET Operation success
           content: {}
         404:
-          description: comment not found
+          description: There is No commens yet
           content: {}
         405:
           description: Validation exception
           content: {}
-      x-codegen-request-body-name: body
     post:
       tags:
       - comments
@@ -804,35 +724,22 @@ paths:
           description: comments not found
           content: {}
   /services:
-    put:
+    get:
       tags:
       - services
-      summary: Update an existing service
-      operationId: updateservice
-      requestBody:
-        description: service object that needs to be added
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Service'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Service'
-        required: true
+      summary:  GET all the Services from the DB
+      operationId: getServices
       responses:
         200:
-          description: the service has been updated
+          description: The GET Operation success
           content: {}
-        400:
-          description: Invalid ID supplied
-          content: {}
+        
         404:
-          description: service not found
+          description: There is No services yet
           content: {}
         405:
           description: Validation exception
           content: {}
-      x-codegen-request-body-name: body
     post:
       tags:
       - services
@@ -881,7 +788,7 @@ paths:
         404:
           description: services not found
           content: {}
-    post:
+    put:
       tags:
       - services
       summary: Updates a services in the store with form data
@@ -967,35 +874,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
   /qoutes:
-    put:
+    get:
       tags:
       - qoutes
-      summary: Update an existing qoute
-      operationId: updateqoute
-      requestBody:
-        description: qoute object that needs to be added
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Qoute'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Qoute'
-        required: true
+      summary:  GET all the Qoutes from the DB
+      operationId: getQoutes
       responses:
         200:
-          description: the qoute has been updated
+          description: The GET Operation success
           content: {}
-        400:
-          description: Invalid ID supplied
-          content: {}
+        
         404:
-          description: qoute not found
+          description: There is No qoutes yet
           content: {}
         405:
           description: Validation exception
           content: {}
-      x-codegen-request-body-name: body
     post:
       tags:
       - qoutes
@@ -1044,7 +938,7 @@ paths:
         404:
           description: qoutes not found
           content: {}
-    post:
+    put:
       tags:
       - qoutes
       summary: Updates a qoutes in the store with form data
@@ -1130,35 +1024,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
   /workStrategys:
-    put:
+    get:
       tags:
       - workStrategys
-      summary: Update an existing workStrategy
-      operationId: updateworkStrategy
-      requestBody:
-        description: workStrategy object that needs to be added
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/WorkStrategy'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/WorkStrategy'
-        required: true
+      summary:  GET all the workStrategys from the DB
+      operationId: getworkStrategys
       responses:
         200:
-          description: the workStrategy has been updated
+          description: The GET Operation success
           content: {}
-        400:
-          description: Invalid ID supplied
-          content: {}
+        
         404:
-          description: workStrategy not found
+          description: There is No workStrategys yet
           content: {}
         405:
           description: Validation exception
           content: {}
-      x-codegen-request-body-name: body
     post:
       tags:
       - workStrategys
@@ -1207,7 +1088,7 @@ paths:
         404:
           description: workStrategys not found
           content: {}
-    post:
+    put:
       tags:
       - workStrategys
       summary: Updates a workStrategys in the store with form data
@@ -1322,6 +1203,9 @@ components:
           format: int64
         title:
           type: string
+        UserId:
+          type: integer
+          format: int32  
         description:
           type: string
         imageUrl:
@@ -1378,6 +1262,9 @@ components:
           format: int64
         name:
           type: string
+        UserId:
+          type: integer
+          format: int32  
         servicId:
           type: integer
           format: int64
@@ -1425,6 +1312,12 @@ components:
           type: string
         imageUrl:
           type: string
+        CreateDate:
+          type: string
+          format: date-time
+        likes:
+          type: integer
+          format: int32  
       xml:
         name: Article
     WorkStrategy:
