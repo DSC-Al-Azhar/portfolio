@@ -1,0 +1,1536 @@
+swagger: "2.0"
+info:
+  description: "This themes enable you to "
+  version: "1.0.0"
+  title: "Personal Portfolio"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "DSC.swagger.io"
+basePath: "/v2"
+tags:
+- name: "users"
+  description: "Everything about your Users"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "services"
+  description: "Everything about your services"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io" 
+- name: "skills"
+  description: "Everything about your skills"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io" 
+- name: "works"
+  description: "Everything about your works"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"     
+- name: "articles"
+  description: "Everything about your Articles"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "comments"
+  description: "Everything about your Comments"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"     
+- name: "workStrategys"
+  description: "Everything about your Comments"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"   
+- name: "qoutes"
+  description: "Everything about your Qoutes"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"         
+schemes:
+- "https"
+- "http"
+paths:
+  /users:
+    post:
+      tags:
+      - "users"
+      summary: "Add a new user"
+      description: ""
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    put:
+      tags:
+      - "users"
+      summary: "Update an existing user"
+      description: ""
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "the user has been updated"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "user not found"
+        "405":
+          description: "Validation exception"
+  
+  /users/{userId}:
+    get:
+      tags:
+      - "users"
+      summary: "Find user by ID"
+      description: "Returns a single user"
+      operationId: "getuserById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "user not found"
+      security:
+      - api_key: []
+    post:
+      tags:
+      - "users"
+      summary: "Updates a user in the store with form data"
+      description: ""
+      operationId: "updateuserWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the user"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the user"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    delete:
+      tags:
+      - "users"
+      summary: "Deletes a user"
+      description: ""
+      operationId: "deleteuser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "userId"
+        in: "path"
+        description: "user id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "user not found"
+      
+  /users/{userId}/uploadImage:
+    post:
+      tags:
+      - "users"
+      summary: "uploads an image"
+      description: ""
+      operationId: "uploadFile"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "additionalMetadata"
+        in: "formData"
+        description: "Additional data to pass to server"
+        required: false
+        type: "string"
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: false
+        type: "file"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+  /users/login:
+    get:
+      tags:
+      - "users"
+      summary: "Logs user into the system"
+      description: ""
+      operationId: "loginUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "query"
+        description: "The user name for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "string"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the user"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date in UTC when token expires"
+        "400":
+          description: "Invalid username/password supplied"
+  /users/logout:
+    get:
+      tags:
+      - "users"
+      summary: "Logs out current logged in user session"
+      description: ""
+      operationId: "logoutUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+  
+
+  /works: 
+    post:
+      tags:
+      - "works"
+      summary: "Add a new work"
+      description: ""
+      operationId: "addWork"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "work object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Work"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    put:
+      tags:
+      - "works"
+      summary: "Update an existing work"
+      description: ""
+      operationId: "updateWork"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Work object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Work"
+      responses:
+        "200":
+          description: "the work has been updated"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "work not found"
+        "405":
+          description: "Validation exception"
+      
+        
+  /works/{workId}:
+    get:
+      tags:
+      - "works"
+      summary: "Find works by ID"
+      description: "Returns a single works"
+      operationId: "getworksById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "workId"
+        in: "path"
+        description: "ID of works to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200": 
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Work"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "works not found"
+      
+    post:
+      tags:
+      - "works"
+      summary: "Updates a works in the store with form data"
+      description: ""
+      operationId: "updateWorksWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "workId"
+        in: "path"
+        description: "ID of works that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the works"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the works"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    delete:
+      tags:
+      - "works"
+      summary: "Deletes a work"
+      description: ""
+      operationId: "deleteWork"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "workId"
+        in: "path"
+        description: "work id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "works not found"
+      
+  /works/{workId}/uploadImage:
+    post:
+      tags:
+      - "works"
+      summary: "uploads an image"
+      description: ""
+      operationId: "uploadFile6"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "workId"
+        in: "path"
+        description: "ID of works to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "additionalMetadata"
+        in: "formData"
+        description: "Additional data to pass to server"
+        required: false
+        type: "string"
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: false
+        type: "file"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"      
+  
+  /skills: 
+    post:
+      tags:
+      - "skills"
+      summary: "Add a new skill"
+      description: ""
+      operationId: "addSkill"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "skill object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Skill"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    put:
+      tags:
+      - "skills"
+      summary: "Update an existing skill"
+      description: ""
+      operationId: "updateSkill"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Skill object that needs to be added"
+        required: true
+        schema: 
+          $ref: "#/definitions/Skill"
+      responses:
+        "200":
+          description: "the skill has been updated"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "skill not found"
+        "405":
+          description: "Validation exception"
+      
+        
+  /skills/{skillId}:
+    get:
+      tags:
+      - "skills"
+      summary: "Find skills by ID"
+      description: "Returns a single skills"
+      operationId: "getskillsById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "skillId"
+        in: "path"
+        description: "ID of skills to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200": 
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Skill"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "skills not found"
+      
+    post:
+      tags:
+      - "skills"
+      summary: "Updates a skills in the store with form data"
+      description: ""
+      operationId: "updateskillsWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "skillId"
+        in: "path"
+        description: "ID of skills that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the skills"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the skills"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    delete:
+      tags:
+      - "skills"
+      summary: "Deletes a skills"
+      description: ""
+      operationId: "deleteSkills"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "skillId"
+        in: "path"
+        description: "skills id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "skills not found"
+      
+
+  /articles: 
+    post:
+      tags:
+      - "articles"
+      summary: "Add a new article"
+      description: ""
+      operationId: "addarticle"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "article object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Article"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    put:
+      tags:
+      - "articles"
+      summary: "Update an existing article"
+      description: ""
+      operationId: "updatearticle"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "article object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Article"
+      responses:
+        "200":
+          description: "the article has been updated"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "article not found"
+        "405":
+          description: "Validation exception"
+      
+        #
+  /articles/{articleId}:
+    get:
+      tags:
+      - "articles"
+      summary: "Find articles by ID"
+      description: "Returns a single articles"
+      operationId: "getarticlesById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "articleId"
+        in: "path"
+        description: "ID of articles to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200": 
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Article"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "articles not found"
+      
+    post:
+      tags:
+      - "articles"
+      summary: "Updates a articles in the store with form data"
+      description: ""
+      operationId: "updatearticlesWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "articleId"
+        in: "path"
+        description: "ID of articles that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the articles"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the articles"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    delete:
+      tags:
+      - "articles"
+      summary: "Deletes a articles"
+      description: ""
+      operationId: "deleteArticles"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "articleId"
+        in: "path"
+        description: "articles id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "articles not found"
+      
+  /articles/{articleId}/uploadImage:
+    post:
+      tags:
+      - "articles"
+      summary: "uploads an image"
+      description: ""
+      operationId: "uploadFile2"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "articleId"
+        in: "path"
+        description: "ID of articles to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "additionalMetadata"
+        in: "formData"
+        description: "Additional data to pass to server"
+        required: false
+        type: "string"
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: false
+        type: "file"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"    
+
+  /comments: 
+    post:
+      tags:
+      - "comments"
+      summary: "Add a new comment"
+      description: ""
+      operationId: "addcomment"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "comment object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Comment"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    put:
+      tags:
+      - "comments"
+      summary: "Update an existing comment"
+      description: ""
+      operationId: "updateComment"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "comment object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Comment"
+      responses:
+        "200":
+          description: "the comment has been updated"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "comment not found"
+        "405":
+          description: "Validation exception"
+      
+        #
+  /comments/{commentId}:
+    
+    delete:
+      tags:
+      - "comments"
+      summary: "Deletes a comments"
+      description: ""
+      operationId: "deletecomments"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "commentId"
+        in: "path"
+        description: "comments id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "comments not found"
+
+  /services: 
+    post:
+      tags:
+      - "services"
+      summary: "Add a new service"
+      description: ""
+      operationId: "addservice"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "service object that needs to be added"
+        required: true
+        schema: 
+          $ref: "#/definitions/Service"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    put:
+      tags:
+      - "services"
+      summary: "Update an existing service"
+      description: ""
+      operationId: "updateservice"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "service object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Service"
+      responses:
+        "200":
+          description: "the service has been updated"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "service not found"
+        "405":
+          description: "Validation exception"
+      
+        #
+  /services/{serviceId}:
+    get:
+      tags:
+      - "services"
+      summary: "Find services by ID"
+      description: "Returns a single services"
+      operationId: "getservicesById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "serviceId"
+        in: "path"
+        description: "ID of services to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200": 
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Service"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "services not found"
+      
+    post:
+      tags:
+      - "services"
+      summary: "Updates a services in the store with form data"
+      description: ""
+      operationId: "updateservicesWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "serviceId"
+        in: "path"
+        description: "ID of services that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the services"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the services"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    delete:
+      tags:
+      - "services"
+      summary: "Deletes a services"
+      description: ""
+      operationId: "deleteservices"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "serviceId"
+        in: "path"
+        description: "services id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "services not found"
+      
+  /services/{serviceId}/uploadImage:
+    post:
+      tags:
+      - "services"
+      summary: "uploads an image"
+      description: ""
+      operationId: "uploadFile3"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "serviceId"
+        in: "path"
+        description: "ID of services to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "additionalMetadata"
+        in: "formData"
+        description: "Additional data to pass to server"
+        required: false
+        type: "string"
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: false
+        type: "file"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"        
+  
+  /qoutes: 
+    post:
+      tags:
+      - "qoutes"
+      summary: "Add a new qoute"
+      description: ""
+      operationId: "addqoute"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "qoute object that needs to be added"
+        required: true
+        schema: 
+          $ref: "#/definitions/Qoute"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    put:
+      tags:
+      - "qoutes"
+      summary: "Update an existing qoute"
+      description: ""
+      operationId: "updateqoute"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "qoute object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Qoute"
+      responses:
+        "200":
+          description: "the qoute has been updated"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "qoute not found"
+        "405":
+          description: "Validation exception"
+      
+        #
+  /qoutes/{qouteId}:
+    get:
+      tags:
+      - "qoutes"
+      summary: "Find qoutes by ID"
+      description: "Returns a single qoutes"
+      operationId: "getqoutesById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "qouteId"
+        in: "path"
+        description: "ID of qoutes to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200": 
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Qoute"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "qoutes not found"
+      
+    post:
+      tags:
+      - "qoutes"
+      summary: "Updates a qoutes in the store with form data"
+      description: ""
+      operationId: "updateqoutesWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "qouteId"
+        in: "path"
+        description: "ID of qoutes that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the qoutes"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the qoutes"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    delete:
+      tags:
+      - "qoutes"
+      summary: "Deletes a qoutes"
+      description: ""
+      operationId: "deleteqoutes"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "qouteId"
+        in: "path"
+        description: "qoutes id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "qoutes not found"
+      
+  /qoutes/{qouteId}/uploadImage:
+    post:
+      tags:
+      - "qoutes"
+      summary: "uploads an image"
+      description: ""
+      operationId: "uploadFile4"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "qouteId"
+        in: "path"
+        description: "ID of qoutes to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "additionalMetadata"
+        in: "formData"
+        description: "Additional data to pass to server"
+        required: false
+        type: "string"
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: false
+        type: "file"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"        
+
+  /workStrategys: 
+    post:
+      tags:
+      - "workStrategys"
+      summary: "Add a new workStrategy"
+      description: ""
+      operationId: "addworkStrategy"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "workStrategy object that needs to be added"
+        required: true
+        schema: 
+          $ref: "#/definitions/WorkStrategy"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    put:
+      tags:
+      - "workStrategys"
+      summary: "Update an existing workStrategy"
+      description: ""
+      operationId: "updateworkStrategy"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "workStrategy object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/WorkStrategy"
+      responses:
+        "200":
+          description: "the workStrategy has been updated"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "workStrategy not found"
+        "405":
+          description: "Validation exception"
+      
+        #
+  /workStrategys/{workStrategyId}:
+    get:
+      tags:
+      - "workStrategys"
+      summary: "Find workStrategys by ID"
+      description: "Returns a single workStrategys"
+      operationId: "getworkStrategysById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "workStrategyId"
+        in: "path"
+        description: "ID of workStrategys to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200": 
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/WorkStrategy"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "workStrategys not found"
+      
+    post:
+      tags:
+      - "workStrategys"
+      summary: "Updates a workStrategys in the store with form data"
+      description: ""
+      operationId: "updateworkStrategysWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "workStrategyId"
+        in: "path"
+        description: "ID of workStrategys that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the workStrategys"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the workStrategys"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+      
+    delete:
+      tags:
+      - "workStrategys"
+      summary: "Deletes a workStrategys"
+      description: ""
+      operationId: "deleteworkStrategys"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "workStrategyId"
+        in: "path"
+        description: "workStrategys id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "workStrategys not found"
+      
+  /workStrategys/{workStrategyId}/uploadImage:
+    post:
+      tags:
+      - "workStrategys"
+      summary: "uploads an image"
+      description: ""
+      operationId: "uploadFile5"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "workStrategyId"
+        in: "path"
+        description: "ID of workStrategys to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "additionalMetadata"
+        in: "formData"
+        description: "Additional data to pass to server"
+        required: false
+        type: "string"
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: false
+        type: "file"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"                  
+          
+securityDefinitions:
+  DSC_auth:
+    type: "oauth2"
+    authorizationUrl: "http://DSC.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:Users: "modify Users in your account"
+      read:Users: "read your Users"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+    
+definitions:
+  Comment:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      ArticleId:
+        type: "integer"
+        format: "int64"
+      UserId:
+        type: "integer"
+        format: "int32"
+      CreateDate:
+        type: "string"
+        format: "date-time"
+      likes:
+        type: "integer"
+        format: "int32"
+        
+    xml:
+      name: "Comment"
+      
+  Qoute:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      description:
+        type: "string" 
+      imageUrl:
+        type: "string"
+    xml:
+      name: "Qoute"
+      
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      imageUrl:
+        type: "string"  
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      userBio:
+        type: "string"
+      story:
+        type: "string"
+    xml:
+      name: "User"
+      
+  Skill:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      value:
+        type: "integer"  
+        format: "int64"
+      userId:
+        type: "integer"
+        format: "int64"  
+    xml:
+      name: "Skill"
+      
+  Work:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      servicId:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "string"  
+      summery:
+        type: "string"  
+      imageUrl:
+        type: "string"   
+    xml:
+      name: "Workes"
+  
+  Service:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      userId:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "string"  
+      summery:
+        type: "string"  
+      imageUrl:
+        type: "string"   
+    xml:
+      name: "Service"    
+  Article:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      userId:
+        type: "integer"
+        format: "int64"
+      contnent:
+        type: "string"  
+      summery:
+        type: "string"  
+      imageUrl:
+        type: "string"   
+    xml:
+      name: "Article"    
+  WorkStrategy:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      userId:
+        type: "integer"
+        format: "int64"
+      imageUrl:
+        type: "string"  
+    xml:
+      name: "WorkStrategy"     
+  
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

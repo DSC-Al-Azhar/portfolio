@@ -1,0 +1,1360 @@
+openapi: 3.0.1
+info:
+  title: Personal Portfolio
+  description: 'This themes enable you to '
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: https://DSC.swagger.io/v2
+- url: http://DSC.swagger.io/v2
+tags:
+- name: users
+  description: Everything about your Users
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: services
+  description: Everything about your services
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: skills
+  description: Everything about your skills
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: works
+  description: Everything about your works
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: articles
+  description: Everything about your Articles
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: comments
+  description: Everything about your Comments
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: workStrategys
+  description: Everything about your Comments
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: qoutes
+  description: Everything about your Qoutes
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+paths:
+  /users:
+    
+    post:
+      tags:
+      - users
+      summary: Add a new user
+      operationId: addUser
+      requestBody:
+        description: User object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /users/{userId}:
+    get:
+      tags:
+      - users
+      summary: Find user by ID
+      description: Returns a single user
+      operationId: getuserById
+      parameters:
+      - name: userId
+        in: path
+        description: ID of user to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: user not found
+          content: {}
+      security:
+      - api_key: []
+    put:
+      tags:
+      - users
+      summary: Updates a user in the store with form data
+      operationId: updateuserWithForm
+      parameters:
+      - name: userId
+        in: path
+        description: ID of user that needs to be updated
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Updated name of the user
+                status:
+                  type: string
+                  description: Updated status of the user
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+    delete:
+      tags:
+      - users
+      summary: Deletes a user
+      operationId: deleteuser
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: user id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: user not found
+          content: {}
+  /users/{userId}/uploadImage:
+    post:
+      tags:
+      - users
+      summary: uploads an image
+      operationId: uploadFile
+      parameters:
+      - name: userId
+        in: path
+        description: ID of user to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  type: string
+                  description: Additional data to pass to server
+                file:
+                  type: string
+                  description: file to upload
+                  format: binary
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /users/login:
+    get:
+      tags:
+      - users
+      summary: Logs user into the system
+      operationId: loginUser
+      parameters:
+      - name: username
+        in: query
+        description: The user name for login
+        required: true
+        schema:
+          type: string
+      - name: password
+        in: query
+        description: The password for login in clear text
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+        400:
+          description: Invalid username/password supplied
+          content: {}
+  /users/logout:
+    get:
+      tags:
+      - users
+      summary: Logs out current logged in user session
+      operationId: logoutUser
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /works:
+    get:
+      tags:
+      - works
+      summary:  GET all the Works from the DB
+      operationId: getWorks
+      responses:
+        200:
+          description: The GET Operation success
+          content: {}
+        
+        404:
+          description: There is No works yet
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+     
+    post:
+      tags:
+      - works
+      summary: Add a new work
+      operationId: addWork
+      requestBody:
+        description: work object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Work'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /works/{workId}:
+    get:
+      tags:
+      - works
+      summary: Find works by ID
+      description: Returns a single works
+      operationId: getworksById
+      parameters:
+      - name: workId
+        in: path
+        description: ID of works to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Work'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Work'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: works not found
+          content: {}
+    post:
+      tags:
+      - works
+      summary: Updates a works in the store with form data
+      operationId: updateWorksWithForm
+      parameters:
+      - name: workId
+        in: path
+        description: ID of works that needs to be updated
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Updated name of the works
+                status:
+                  type: string
+                  description: Updated status of the works
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+    delete:
+      tags:
+      - works
+      summary: Deletes a work
+      operationId: deleteWork
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: workId
+        in: path
+        description: work id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: works not found
+          content: {}
+  /works/{workId}/uploadImage:
+    post:
+      tags:
+      - works
+      summary: uploads an image
+      operationId: uploadFile6
+      parameters:
+      - name: workId
+        in: path
+        description: ID of works to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  type: string
+                  description: Additional data to pass to server
+                file:
+                  type: string
+                  description: file to upload
+                  format: binary
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /skills:
+    get:
+      tags:
+      - skills
+      summary:  GET all the Skills from the DB
+      operationId: getskills
+      responses:
+        200:
+          description: The GET Operation success
+          content: {}
+        
+        404:
+          description: There is No skills yet
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+    post:
+      tags:
+      - skills
+      summary: Add a new skill
+      operationId: addSkill
+      requestBody:
+        description: skill object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Skill'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /skills/{skillId}:
+    get:
+      tags:
+      - skills
+      summary: Find skills by ID
+      description: Returns a single skills
+      operationId: getskillsById
+      parameters:
+      - name: skillId
+        in: path
+        description: ID of skills to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Skill'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: skills not found
+          content: {}
+    put:
+      tags:
+      - skills
+      summary: Updates a skills in the store with form data
+      operationId: updateskillsWithForm
+      parameters:
+      - name: skillId
+        in: path
+        description: ID of skills that needs to be updated
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Updated name of the skills
+                status:
+                  type: string
+                  description: Updated status of the skills
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+    delete:
+      tags:
+      - skills
+      summary: Deletes a skills
+      operationId: deleteSkills
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: skillId
+        in: path
+        description: skills id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: skills not found
+          content: {}
+  /articles:
+    get:
+      tags:
+      - articles
+      summary:  GET all the Articles from the DB
+      operationId: getArticles
+      responses:
+        200:
+          description: The GET Operation success
+          content: {}
+        
+        404:
+          description: There is No articles yet
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+    post:
+      tags:
+      - articles
+      summary: Add a new article
+      operationId: addarticle
+      requestBody:
+        description: article object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /articles/{articleId}:
+    get:
+      tags:
+      - articles
+      summary: Find articles by ID
+      description: Returns a single articles
+      operationId: getarticlesById
+      parameters:
+      - name: articleId
+        in: path
+        description: ID of articles to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Article'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: articles not found
+          content: {}
+    put:
+      tags:
+      - articles
+      summary: Updates a articles in the store with form data
+      operationId: updatearticlesWithForm
+      parameters:
+      - name: articleId
+        in: path
+        description: ID of articles that needs to be updated
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Updated name of the articles
+                status:
+                  type: string
+                  description: Updated status of the articles
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+    delete:
+      tags:
+      - articles
+      summary: Deletes a articles
+      operationId: deleteArticles
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: articleId
+        in: path
+        description: articles id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: articles not found
+          content: {}
+  /articles/{articleId}/uploadImage:
+    post:
+      tags:
+      - articles
+      summary: uploads an image
+      operationId: uploadFile2
+      parameters:
+      - name: articleId
+        in: path
+        description: ID of articles to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  type: string
+                  description: Additional data to pass to server
+                file:
+                  type: string
+                  description: file to upload
+                  format: binary
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /comments:
+    get:
+      tags:
+      - comments
+      summary:  GET all the Comments from the DB
+      operationId: getComments
+      responses:
+        200:
+          description: The GET Operation success
+          content: {}
+        404:
+          description: There is No commens yet
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+    post:
+      tags:
+      - comments
+      summary: Add a new comment
+      operationId: addcomment
+      requestBody:
+        description: comment object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /comments/{commentId}:
+    delete:
+      tags:
+      - comments
+      summary: Deletes a comments
+      operationId: deletecomments
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: commentId
+        in: path
+        description: comments id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: comments not found
+          content: {}
+  /services:
+    get:
+      tags:
+      - services
+      summary:  GET all the Services from the DB
+      operationId: getServices
+      responses:
+        200:
+          description: The GET Operation success
+          content: {}
+        
+        404:
+          description: There is No services yet
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+    post:
+      tags:
+      - services
+      summary: Add a new service
+      operationId: addservice
+      requestBody:
+        description: service object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /services/{serviceId}:
+    get:
+      tags:
+      - services
+      summary: Find services by ID
+      description: Returns a single services
+      operationId: getservicesById
+      parameters:
+      - name: serviceId
+        in: path
+        description: ID of services to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Service'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: services not found
+          content: {}
+    put:
+      tags:
+      - services
+      summary: Updates a services in the store with form data
+      operationId: updateservicesWithForm
+      parameters:
+      - name: serviceId
+        in: path
+        description: ID of services that needs to be updated
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Updated name of the services
+                status:
+                  type: string
+                  description: Updated status of the services
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+    delete:
+      tags:
+      - services
+      summary: Deletes a services
+      operationId: deleteservices
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: serviceId
+        in: path
+        description: services id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: services not found
+          content: {}
+  /services/{serviceId}/uploadImage:
+    post:
+      tags:
+      - services
+      summary: uploads an image
+      operationId: uploadFile3
+      parameters:
+      - name: serviceId
+        in: path
+        description: ID of services to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  type: string
+                  description: Additional data to pass to server
+                file:
+                  type: string
+                  description: file to upload
+                  format: binary
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /qoutes:
+    get:
+      tags:
+      - qoutes
+      summary:  GET all the Qoutes from the DB
+      operationId: getQoutes
+      responses:
+        200:
+          description: The GET Operation success
+          content: {}
+        
+        404:
+          description: There is No qoutes yet
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+    post:
+      tags:
+      - qoutes
+      summary: Add a new qoute
+      operationId: addqoute
+      requestBody:
+        description: qoute object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Qoute'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /qoutes/{qouteId}:
+    get:
+      tags:
+      - qoutes
+      summary: Find qoutes by ID
+      description: Returns a single qoutes
+      operationId: getqoutesById
+      parameters:
+      - name: qouteId
+        in: path
+        description: ID of qoutes to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Qoute'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Qoute'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: qoutes not found
+          content: {}
+    put:
+      tags:
+      - qoutes
+      summary: Updates a qoutes in the store with form data
+      operationId: updateqoutesWithForm
+      parameters:
+      - name: qouteId
+        in: path
+        description: ID of qoutes that needs to be updated
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Updated name of the qoutes
+                status:
+                  type: string
+                  description: Updated status of the qoutes
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+    delete:
+      tags:
+      - qoutes
+      summary: Deletes a qoutes
+      operationId: deleteqoutes
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: qouteId
+        in: path
+        description: qoutes id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: qoutes not found
+          content: {}
+  /qoutes/{qouteId}/uploadImage:
+    post:
+      tags:
+      - qoutes
+      summary: uploads an image
+      operationId: uploadFile4
+      parameters:
+      - name: qouteId
+        in: path
+        description: ID of qoutes to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  type: string
+                  description: Additional data to pass to server
+                file:
+                  type: string
+                  description: file to upload
+                  format: binary
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /workStrategys:
+    get:
+      tags:
+      - workStrategys
+      summary:  GET all the workStrategys from the DB
+      operationId: getworkStrategys
+      responses:
+        200:
+          description: The GET Operation success
+          content: {}
+        
+        404:
+          description: There is No workStrategys yet
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+    post:
+      tags:
+      - workStrategys
+      summary: Add a new workStrategy
+      operationId: addworkStrategy
+      requestBody:
+        description: workStrategy object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkStrategy'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /workStrategys/{workStrategyId}:
+    get:
+      tags:
+      - workStrategys
+      summary: Find workStrategys by ID
+      description: Returns a single workStrategys
+      operationId: getworkStrategysById
+      parameters:
+      - name: workStrategyId
+        in: path
+        description: ID of workStrategys to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/WorkStrategy'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkStrategy'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: workStrategys not found
+          content: {}
+    put:
+      tags:
+      - workStrategys
+      summary: Updates a workStrategys in the store with form data
+      operationId: updateworkStrategysWithForm
+      parameters:
+      - name: workStrategyId
+        in: path
+        description: ID of workStrategys that needs to be updated
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Updated name of the workStrategys
+                status:
+                  type: string
+                  description: Updated status of the workStrategys
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+    delete:
+      tags:
+      - workStrategys
+      summary: Deletes a workStrategys
+      operationId: deleteworkStrategys
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: workStrategyId
+        in: path
+        description: workStrategys id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: workStrategys not found
+          content: {}
+  /workStrategys/{workStrategyId}/uploadImage:
+    post:
+      tags:
+      - workStrategys
+      summary: uploads an image
+      operationId: uploadFile5
+      parameters:
+      - name: workStrategyId
+        in: path
+        description: ID of workStrategys to update
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  type: string
+                  description: Additional data to pass to server
+                file:
+                  type: string
+                  description: file to upload
+                  format: binary
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+components:
+  schemas:
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        ArticleId:
+          type: integer
+          format: int64
+        UserId:
+          type: integer
+          format: int32
+        CreateDate:
+          type: string
+          format: date-time
+        likes:
+          type: integer
+          format: int32
+      xml:
+        name: Comment
+    Qoute:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        UserId:
+          type: integer
+          format: int32  
+        description:
+          type: string
+        imageUrl:
+          type: string
+      xml:
+        name: Qoute
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        imageUrl:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userBio:
+          type: string
+        story:
+          type: string
+      xml:
+        name: User
+    Skill:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+      xml:
+        name: Skill
+    Work:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        UserId:
+          type: integer
+          format: int32  
+        servicId:
+          type: integer
+          format: int64
+        status:
+          type: string
+        summery:
+          type: string
+        imageUrl:
+          type: string
+      xml:
+        name: Workes
+    Service:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        status:
+          type: string
+        summery:
+          type: string
+        imageUrl:
+          type: string
+      xml:
+        name: Service
+    Article:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        contnent:
+          type: string
+        summery:
+          type: string
+        imageUrl:
+          type: string
+        CreateDate:
+          type: string
+          format: date-time
+        likes:
+          type: integer
+          format: int32  
+      xml:
+        name: Article
+    WorkStrategy:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        imageUrl:
+          type: string
+      xml:
+        name: WorkStrategy
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    DSC_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://DSC.swagger.io/oauth/dialog
+          scopes:
+            write:Users: modify Users in your account
+            read:Users: read your Users
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
