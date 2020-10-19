@@ -1,16 +1,13 @@
 /* Start recent-works section */
 
 .recent-works {text-align: center;
-               width: 1519px;}
+}
 
 .recent-works h1 {
                  font-size: 40px;
                  font-weight: 500;
-                 font-style: normal;
-                 font-stretch: normal;
                  color: #141f32;
                  line-height: 1.4;
-                 letter-spacing: normal;
                 font-family:sans-serif;
                  }
 
@@ -20,37 +17,39 @@
                      font-family: Rubik;
                      font-size: 14px;
                      font-weight: 500;
-                     font-stretch: normal;
-                     font-style: normal;
                      line-height: 1.2;
-                     letter-spacing: normal;
                      padding: 10px;
                      color: #7a8baa;
                      display: inline;
 }
-.recent-works ul li:hover{color: #f9320c;}
+.recent-works ul li:hover{color: #f9320c;
+                          font-weight: 600;}
+                          
+.recent-works ul .active {color:  #f9320c;
+                           font-weight: 600; }
 
-.recent-works .img{display: flex;
-                  margin: 30px auto;
-                  flex-wrap: wrap;
-                  width: 1200px;
-                  height: 800px;
-                  justify-content: center;
-               
+.recent-works .recent-works-img{display: flex;
+                                margin: 30px auto;
+                                flex-wrap: wrap;
+                                width: 1200px;
+                                height: 800px;
+                                justify-content: center;
+                            
    
   
 }
-.recent-works .img img{width: 330px;
-                       padding: 10px;}
+.recent-works .recent-works-img img{width: 310px;
+                                   padding: 10px;}
 
                
 .recent-works button {color: white;
                         background-color: rgb(250, 27, 27);
                         height: 60px;
-                        width: 220px;
-                        padding: 15px;
+                        width: 200px;
+                        padding: 12px;
                         border-radius: 30px;
-                        
+                        font-size: 18px;
+                        margin-left: 20px;
                        border: 2px solid rgb(250, 27, 27) ;}
 
 
