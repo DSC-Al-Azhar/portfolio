@@ -26,6 +26,9 @@
 .best-expertise .best-expertise-box:hover .btn {
   background-color: #f9320c;
   color: white;
+  transition: all 0.9 ease-in-out;
+  -webkit-transition: all 0.9 ease-in-out;
+  -moz-transition: all 0.9 ease-in-out;
 }
 
 /* Start Animation for background div */
@@ -41,16 +44,17 @@
   .best-expertise-box-content {
   z-index: 1;
   position: absolute;
+  text-align: center;
 }
 
 .best-expertise .best-expertise-box .best-expertise-box-animation:hover::before,
 .best-expertise .best-expertise-box .best-expertise-box-animation:hover::after {
   position: absolute;
   background: white;
-  margin-left: -12px;
-  margin-top: -12px;
-  width: 310px;
-  height: 365px;
+  margin-left: -7px;
+  margin-top: -3px;
+  width: 330px;
+  height: 340px;
   content: "";
   display: block;
   border-radius: 50%;
@@ -59,12 +63,12 @@
 .best-expertise
   .best-expertise-box
   .best-expertise-box-animation:hover::before {
-  animation: waving 3s infinite ease-out;
+  animation: waving 3s 3 ease-out;
 }
 
 .best-expertise .best-expertise-box .best-expertise-box-animation:hover::after {
   opacity: 0;
-  animation: waving 3s 1.5s infinite ease-out;
+  animation: waving 3s 1.5s 3 ease-out;
 }
 
 @keyframes waving {
@@ -114,5 +118,5 @@
   border: solid 2px rgba(249, 50, 12, 0.2);
   background-color: #f9f7ff;
   margin-top: 20px;
-  font-size: 8px;
+  font-size: 12px;
 }
