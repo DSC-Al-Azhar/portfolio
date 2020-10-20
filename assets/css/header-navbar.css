@@ -3,12 +3,12 @@ body {
 }
 .navbar-main {
   background-color: var(--main-color);
-  clip-path: polygon(100% 0, 100% 34%, 60% 100%, 0 100%, 0 1%);
+  clip-path: polygon(100% 0, 100% 34%, 60% 100%, 0 100%, 0 0);
   margin-bottom: 30px;
   z-index: 999999;
 }
 .clip-container {
-  clip-path: polygon(100% 0, 100% 34%, 60% 100%, 0 100%, 0 1%);
+  clip-path: polygon(100% 0, 100% 34%, 60% 100%, 0 100%, 0 0);
   background-color: #f9f7ff;
 }
 
