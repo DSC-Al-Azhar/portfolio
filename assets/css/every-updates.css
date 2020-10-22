@@ -1,7 +1,4 @@
-.updates {
-    background-color: #ffffff !important;
-  }
-  .updates__title {
+.updates__title {
     text-align: center;
     font-size: 45px; 
     margin-top: 15px ;
@@ -13,39 +10,30 @@
     justify-content: center;
   }
   .updates__card {
-    width: 360px;
-    height: 450px;
     background-color: var(--sub-color);
-    margin: 10px;
+       margin: 0 15px;
+    padding: 33px 25px 33px 25px;
   
   }
-  .updates__cardimg {
-    
-    width: 280px;
-    height: 197px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    object-fit: contain;
+  .updates__p
+  {  
+    font-size: 19px;
+    text-align: left;
+    line-height: 30px;
+    color: #141f32;
+
+    padding-bottom: 20px;
     
   }
-  .updates__p
-  {
-    
-    height: 112px;
-    font-size: 24px;
-    text-align: center;
-    color: #141f32;
-    margin: 10px;
+  .updates__cardimg {
+    border-radius: 7px;
   }
   
  .updates__nav {
-    width: 85%;
     height: 40px;
     display: flex;
     justify-content: center;
     justify-content: space-around;
-
     margin-top: 10px;
     margin-bottom: 10px;
   }
