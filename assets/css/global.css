@@ -11,8 +11,8 @@ Fonts Should Be Use
 PTSerif => For Heading
 Rubik => For Paragraphs and  Buttons and Links
  */
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Rubik:ital,wght@0,400;0,500;1,300;1,400&display=swap');
-@import url('every-updates.css');
+ @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap&family=Rubik:ital,wght@0,400;0,500;1,300;1,400&display=swap');
+ @import url('every-updates.css');
 body {
     font-family: 'Rubik' ,sans-serif;
   }
@@ -24,15 +24,15 @@ body {
 }
 /* Every Section Will Be Padding Top and Bottom 40px */
 .section--py{padding: 40px 0;}
-.section:nth-of-type(even){background-color: var(--sub-color);}
-.section:nth-of-type(odd){background-color: #fff;}
+.section:nth-of-type(odd){background-color: var(--sub-color);}
+.section:nth-of-type(even){background-color: #fff;}
 
 a {text-decoration: none;}  
 a:hover {color: var(--main-color);}
   
 ul {list-style: none;}
 p{color: var(--p-color);}
-h1,h2,h3,h4,h5,h6{font-family: 'PT Serif', serif;}
+h1,h2,h3,h4,h5,h6{font-family: 'Padauk', serif;}
 /* Custom Button */
 .btn{
     border: none;
