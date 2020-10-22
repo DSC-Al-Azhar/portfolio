@@ -1,0 +1,70 @@
+.work-process {
+  background-color: #f9f7ff !important;
+  border: 2px solid #f9c4bf;
+  border-radius: 5rem 0 0;
+  padding: 5rem;
+}
+.work-process__heading {
+  text-align: center;
+  margin: 2rem auto;
+  font-size: 2rem;
+  color: #384152;
+}
+
+.work-process__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.work-process__line {
+  width: 7rem;
+  height: 5px;
+  display: inline-block;
+  background-color: #f9c4bf;
+}
+.work-process__icon {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  left: 9%;
+  display: inline-block;
+  border: 1.5px dashed #f9320c;
+  border-radius: 50%;
+  top: 9%;
+  line-height: 4rem;
+  text-align: center;
+  color: var(--main-color);
+  font-size: 2rem;
+}
+
+.work-process__title {
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #3e4758;
+  display: inline-block;
+  width: 8rem;
+  display: none;
+}
+
+.work-process__wrapper {
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.work-process__wrapper:hover .work-process__title {
+  display: block;
+}
+.work-process__wrapper:hover {
+  transition: background-color 0.25s ease-in-out;
+  background-color: var(--main-color);
+}
+.work-process__wrapper:hover .work-process__icon {
+  transition: color 0.15 ease-in-out;
+  border-color: #fff;
+  color: #fff;
+}
