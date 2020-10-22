@@ -18,8 +18,8 @@
 }
 
 .work-process__line {
-  width: 4rem;
-  height: 3px;
+  width: 7rem;
+  height: 5px;
   display: inline-block;
   background-color: #f9c4bf;
 }
@@ -60,9 +60,11 @@
   display: block;
 }
 .work-process__wrapper:hover {
+  transition: background-color 0.25s ease-in-out;
   background-color: var(--main-color);
 }
 .work-process__wrapper:hover .work-process__icon {
+  transition: color 0.15 ease-in-out;
   border-color: #fff;
   color: #fff;
 }
