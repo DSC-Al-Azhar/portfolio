@@ -1,0 +1,128 @@
+.best-expertise .best-expertise-header h2 {
+  text-transform: capitalize;
+  text-align: center;
+  color: var(--btn-color);
+    padding: 15px 0;
+/*  font-size: 50px;*/
+/*  font-family: PTSerif-Bold-; Fix*/
+/*  color: #141f32;*/
+}
+
+/* div contains three divs */
+.best-expertise .best-expertise-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* the div which reabeted in seaction */
+.best-expertise .best-expertise-box {
+  width: 360px;
+  height: 370px;
+  background-color: #f9f7ff;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 40px 7px;
+    position: relative;
+    overflow: hidden;
+}
+
+.best-expertise .best-expertise-box:hover .btn {
+  background-color: #f9320c;
+  color: white;
+  transition: all 0.9 ease-in-out;
+  -webkit-transition: all 0.9 ease-in-out;
+  -moz-transition: all 0.9 ease-in-out;
+}
+
+/* Start Animation for background div */
+.best-expertise .best-expertise-box .best-expertise-box-animation {
+  position: absolute;
+  width: 347px;
+  height: 380px;
+}
+
+.best-expertise
+  .best-expertise-box
+  .best-expertise-box-animation
+  .best-expertise-box-content {
+  z-index: 1;
+  position: absolute;
+  text-align: center;
+}
+
+.best-expertise .best-expertise-box .best-expertise-box-animation:hover::before,
+.best-expertise .best-expertise-box .best-expertise-box-animation:hover::after {
+  position: absolute;
+  background: white;
+  margin-left: -7px;
+  margin-top: -3px;
+  width: 330px;
+  height: 340px;
+  content: "";
+  display: block;
+  border-radius: 50%;
+}
+
+.best-expertise
+  .best-expertise-box
+  .best-expertise-box-animation:hover::before {
+  animation: waving 3s 3 ease-out;
+}
+
+.best-expertise .best-expertise-box .best-expertise-box-animation:hover::after {
+  opacity: 0;
+  animation: waving 3s 1.5s 3 ease-out;
+}
+
+@keyframes waving {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    transform-origin: center;
+    border-radius: 100%;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.03;
+    transform-origin: center;
+    background-color: #f9320c;
+    border-radius: 100%;
+  }
+}
+/* End Animation for background div */
+
+.best-expertise .best-expertise-box .icon {
+  font-size: 40px;
+  object-fit: contain;
+/*  padding: 30px 0px;*/
+  color: #f9320c;
+}
+
+.best-expertise .best-expertise-box .box-heading {
+  font-size: 24px;
+/*  font-family: PTSerif-Bold-; Fix*/
+    font-weight: 100;
+  color: #141f32;
+/*  margin-bottom: 10px;*/
+    padding: 20px 0;
+}
+
+.best-expertise .best-expertise-box .box-body {
+  line-height: 28px;
+  color: #7a8baa;
+  font-family: Rubik-Regular;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
+.best-expertise .best-expertise-box .btn {
+  cursor: pointer;
+  width: 190px;
+  height: 50px;
+  border-radius: 25px;
+  border: solid 2px rgba(249, 50, 12, 0.2);
+  background-color: #f9f7ff;
+  margin-top: 20px;
+  font-size: 12px;
+}

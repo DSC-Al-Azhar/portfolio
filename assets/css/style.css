@@ -1,2 +1,11 @@
 @import url('normalize.css');
 @import url('global.css');
+@import url("header-navbar.css");
+@import url("about.css");
+@import url("work-process.css");
+@import url("best.css");
+@import url("estimate.css");
+@import url("recent-works.css");
+@import url("testimonials.css");
+@import url("every-updates.css");
+@import url("form-footer.css");
