@@ -1,0 +1,87 @@
+/* Start recent-works section */
+
+.recent-works {text-align: center; clear: both;}
+
+.recent-works h2 {
+/*
+ font-size: 40px;
+ color: #141f32;
+ line-height: 1.4;
+font-family:sans-serif;
+*/
+    font-weight: 500;
+    color: var(--btn-color);
+    padding: 15px 0;
+}
+
+
+
+ .recent-works ul li{
+/*   font-family: Rubik;*/
+                     font-size: 14px;
+                     font-weight: 500;
+                     line-height: 1.2;
+                     padding: 10px;
+                     color: #7a8baa;
+                     display: inline;
+}
+.recent-works ul li:hover{color: #f9320c;
+                          font-weight: 600;}
+                          
+.recent-works ul .active {color:  #f9320c;
+                           font-weight: 600; }
+
+.recent-works .recent-works-img{display: flex;
+                                margin: 30px auto;
+                                flex-wrap: wrap;
+                                width: 1200px;
+                                height: 800px;
+                                justify-content: center;
+                            
+   
+  
+}
+.recent-works .recent-works-img img{width: 310px;
+                                   padding: 10px;}
+
+               
+.recent-works button {color: white;
+                        background-color: rgb(250, 27, 27);
+                        height: 60px;
+                        width: 200px;
+                        padding: 12px;
+                        border-radius: 30px;
+                        font-size: 18px;
+                        margin-left: 20px;
+                       border: 2px solid rgb(250, 27, 27) ;}
+
+
+
+
+
+
+
+
+/* End recent-works section */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

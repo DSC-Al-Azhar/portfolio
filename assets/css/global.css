@@ -1,3 +1,4 @@
+@import url("all.min.css");
 *{margin: 0; padding: 0;box-sizing: border-box;} /* Reset WebSite */
 html{scroll-behavior: smooth;} /* Scroll Smooth */
 :root {
@@ -8,10 +9,11 @@ html{scroll-behavior: smooth;} /* Scroll Smooth */
 }
 /* 
 Fonts Should Be Use
-PTSerif => For Heading
+Padauk => For Heading
 Rubik => For Paragraphs and  Buttons and Links
  */
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Rubik:ital,wght@0,400;0,500;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap&family=Rubik:ital,wght@0,400;0,500;1,300;1,400&display=swap');
+
 
 body {
     font-family: 'Rubik' ,sans-serif;
@@ -23,16 +25,17 @@ body {
     margin: auto;
 }
 /* Every Section Will Be Padding Top and Bottom 40px */
-.section--py{padding: 40px 0;}
-.section:nth-of-type(odd){background-color: var(--sub-color);}
-.section:nth-of-type(even){background-color: #fff;}
+.section--py{padding: 50px 0;}
+.section:nth-of-type(even){background-color: var(--sub-color);}
+.section:nth-of-type(odd){background-color: #fff;}
 
 a {text-decoration: none;}  
 a:hover {color: var(--main-color);}
   
 ul {list-style: none;}
 p{color: var(--p-color);}
-h1,h2,h3,h4,h5,h6{font-family: 'PT Serif', serif;}
+h1,h2,h3,h4,h5,h6{font-family: 'Padauk', serif;}
+h2{font-size: 40px; text-transform: capitalize;}
 /* Custom Button */
 .btn{
     border: none;
