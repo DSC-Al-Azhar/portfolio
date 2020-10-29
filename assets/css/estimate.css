@@ -3,12 +3,13 @@
   background-image: url("../imgs/Estatimate/bright.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 350px;
+  background-position: center center;
+  height: 80vh;
 /*    border-radius: 25px ;*/
-    width: 90%;
+    width: 100%;
     
-float: right;
-  border-radius: 30px 0 0 0;
+  display:grid;
+  grid-template-columns: 1fr;
 }
 
 .estimate-project .estmate-father .estimate-body {
@@ -19,6 +20,8 @@ float: right;
 .estimate-project .estmate-father .estimate-body p {
     font-family: Rubik-Regular-;
     color: #141f32;
+    font-size: 1.25rem;
+    font-weight:blod;
 }
 
 .estimate-project .estmate-father .estimate-body h2 {
@@ -29,6 +32,7 @@ float: right;
 */
     color: var(--btn-color);
     padding: 20px 0;
+    font-size:3.25rem;
 }
 
 .estimate-project .estmate-father .estimate-body .btn {
