@@ -3,12 +3,14 @@
   border: 2px solid #f9c4bf;
   border-radius: 5rem 0 0;
   padding: 5rem;
+  height:90vh;
 }
 .work-process__heading {
   text-align: center;
   margin: 2rem auto;
-  font-size: 2rem;
+  font-size:3.125rem;
   color: #384152;
+  font-weight:bold;
 }
 
 .work-process__content {
@@ -24,18 +26,17 @@
   background-color: #f9c4bf;
 }
 .work-process__icon {
-  position: relative;
-  width: 4rem;
-  height: 4rem;
-  left: 9%;
-  display: inline-block;
+  width: 7rem;
+  height: 7rem;
   border: 1.5px dashed #f9320c;
   border-radius: 50%;
-  top: 9%;
-  line-height: 4rem;
   text-align: center;
   color: var(--main-color);
-  font-size: 2rem;
+  font-size: 4rem;
+  display:grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
 }
 
 .work-process__title {
@@ -46,12 +47,18 @@
   color: #3e4758;
   display: inline-block;
   width: 8rem;
+  font-weight: bold;
+  font-size: 1rem;
   display: none;
 }
 
 .work-process__wrapper {
-  width: 5rem;
-  height: 5rem;
+  width: 10rem;
+  height: 10rem;
+  display:grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
   position: relative;
   background-color: #fff;
   border-radius: 50%;

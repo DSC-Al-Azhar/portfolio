@@ -9,7 +9,8 @@
  line-height: 1.4;
 font-family:sans-serif;
 */
-    font-weight: 500;
+    font-weight: bold;
+    font-size:3.25rem;
     color: var(--btn-color);
     padding: 15px 0;
 }
@@ -18,12 +19,12 @@ font-family:sans-serif;
 
  .recent-works ul li{
 /*   font-family: Rubik;*/
-                     font-size: 14px;
-                     font-weight: 500;
-                     line-height: 1.2;
-                     padding: 10px;
-                     color: #7a8baa;
-                     display: inline;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2;
+    padding: 10px;
+    color: #7a8baa;
+    display: inline-block;
 }
 .recent-works ul li:hover{color: #f9320c;
                           font-weight: 600;}
@@ -31,18 +32,22 @@ font-family:sans-serif;
 .recent-works ul .active {color:  #f9320c;
                            font-weight: 600; }
 
-.recent-works .recent-works-img{display: flex;
-                                margin: 30px auto;
-                                flex-wrap: wrap;
-                                width: 1200px;
-                                height: 800px;
-                                justify-content: center;
+.recent-works-img{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin: 2rem 1rem 2rem 1rem;
+    justify-items:center;
+    align-items: center;
+    grid-gap: 2rem 2rem;
+    justify-content: center;
                             
    
   
 }
-.recent-works .recent-works-img img{width: 310px;
-                                   padding: 10px;}
+.recent-works .recent-works-img img{
+    max-width: 100%;
+    height: auto;
+}
 
                
 .recent-works button {color: white;
